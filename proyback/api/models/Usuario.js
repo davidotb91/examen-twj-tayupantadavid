@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     agarres:{
       collection:"Agarre",
-      via:"idAgarre"
+      via:"idUsuario"
     }
 
   }
