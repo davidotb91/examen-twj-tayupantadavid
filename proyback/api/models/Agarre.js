@@ -8,6 +8,10 @@
 module.exports = {
 
   attributes: {
+    idUsuario:{
+      model:"Usuario"
+    }
+
 
   }
 };
