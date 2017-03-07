@@ -8,15 +8,7 @@
   module.exports = {
 
     attributes: {
-      nombre: {
-        type: 'string'
-      },
-      preferencia: {
-        type: 'string'
-      },
-      fechaNacimiento: {
-        type: 'date'
-      },
+
       agarres:{
         collection:"Agarre",
         via:"idUsuario"

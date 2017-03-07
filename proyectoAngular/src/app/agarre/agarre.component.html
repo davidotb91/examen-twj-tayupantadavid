@@ -1,3 +1,169 @@
-<p>
-  agarre works!
-</p>
+<br>
+<br>
+<h1>{{title}}</h1>
+<h2>{{error}}</h2>
+
+<!--Crear Agarre-->
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <form class="animated bounceIn" (ngSubmit)="crearAgarre(NuevoAgarreForm)" #NuevoAgarreForm="ngForm">
+      <div class="form-group">
+        <label>Nombre</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input required
+                 name="nombre"
+                 minlength="4"
+                 type="text"
+                 id="nombre"
+                 class="form-control"
+                 placeholder="Ingrese el nombre del Agarre"
+                 #nombre="ngModel"
+                 [(ngModel)]="nuevoAgarre.nombre"
+                 #nombreElm>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Numero de veces</label>
+        <div class="input-group">
+          <input required
+                 name="veces"
+                 minlength="4"
+                 type="number"
+                 id="veces"
+                 class="form-control"
+                 placeholder="Ingrese las veces del Agarre"
+                 #veces="ngModel"
+                 [(ngModel)]="nuevoAgarre.veces"
+                 #nombreElm>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Usuario</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+          <select required
+                  class="form-control"
+                  name="idUsuario"
+                  id="idUsuario"
+                  [(ngModel)]="nuevoAgarre.idUsuario"
+                  #idUsuario="ngModel">
+            <option *ngFor="let usuario of usuarios" value="{{usuario.id}}>{{usuario.nombre}}">{{usuario.nombre}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <button [disabled]="disabledButtons.NuevoAgarreFormSumitButton||!NuevoAgarreForm.valid" type="submit"
+                class="btn btn-block btn-success btn-lg">
+          <span class="glyphicon glyphicon-ok"></span> Crear
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--Listar Agarre-->
+<h2>{{subtitle}}</h2>
+<div class="row">
+  <div class="col-sm-4 animated bounceIn" *ngFor="let agarre of agarres">
+
+    <div class="col-md-7">
+      <div class="text-center ma-borde ma-padding-top-bottom">
+        <h3>{{agarre.nombre}}</h3>
+        <p>Veces:<br>{{agarre.veces}}
+          <br>Dinero Invertido:
+          <br>{{agarre.dineroGastado}}</p>
+        <br>
+      </div>
+      <div class="row" [hidden]="!Agarre.formularioCerrado">
+
+        <div class="col-sm-4">
+          <button class="btn btn-danger btn-group-sm" (click)="borrarAgarre(agarre.id)"><span
+            class="glyphicon glyphicon-remove"></span> Borrar
+          </button>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <button class="btn btn-info btn-group-sm" (click)="Agarre.formularioCerrado=!Agarre.formularioCerrado"><span
+            class="glyphicon glyphicon-refresh"></span> Actualizar
+          </button>
+        </div>
+      </div>
+
+
+      <div class="row" [hidden]="Agarre.formularioCerrado">
+        <form action="">
+          <form (ngSubmit)="actualizarAgarre(Agarre, agarre.id)" #NuevoAgarreForm="ngForm">
+
+            <div class="row">
+
+              <div class="form-group">
+                <label>Agarre</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input required
+                         name="nombre"
+                         minlength="4"
+                         type="text"
+                         class="form-control"
+                         placeholder="Ingrese el nombre del Agarre"
+                         #nombre="ngModel"
+                         [(ngModel)]="Agarre.nombre"
+                         #nombreElm>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Numero de Veces:</label>
+                <div class="input-group">
+                  <input required
+                         name="veces"
+                         minlength="4"
+                         type="number"
+                         id="veces"
+                         class="form-control"
+                         placeholder="Ingrese las veces del Agarre"
+                         #veces="ngModel"
+                         [(ngModel)]="nuevoAgarre.veces"
+                         #nombreElm>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Usuario</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+                  <select required
+                          class="form-control"
+                          name="idUsuario"
+                          id="idUsuario"
+                          [(ngModel)]="nuevoAgarre.idUsuario"
+                          #idUsuario="ngModel">
+                    <option *ngFor="let usuario of usuarios" value="{{usuario.id}}>{{usuario.nombre}}">{{usuario.nombre}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-success btn-group-sm"><span
+                    class="glyphicon glyphicon-ok-circle"></span> Aceptar
+                  </button>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-warning btn-group-sm"
+                          (click)="Agarre.formularioCerrado=!Agarre.formularioCerrado"><span
+                    class="glyphicon glyphicon-ban-circle"></span>
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

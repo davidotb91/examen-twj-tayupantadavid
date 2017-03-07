@@ -7,14 +7,11 @@
         {{nuevoUsuario | json}}
       </pre>
     </div>
+    <!--crear usuario-->
     <div class="col-sm-6">
       <form class="animated bounceIn" (ngSubmit)="crearUsuario(NuevoUsuarioForm)" #NuevoUsuarioForm="ngForm">
         <div class="form-group">
           <label>Usuario</label>
-          <!--<div class="animated slideInUp" [hidden]="!nombre.errors">-->
-          <!--<span style="font-size:40px" class="bg-primary" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" >Ingrese un nombre minimo con 4 caracteres </span>-->
-          <!--</div>-->
-
           <input required
                  minlength="4"
                  type="text"
@@ -27,9 +24,6 @@
         </div>
         <div class="form-group">
           <label>Preferencia</label>
-          <!--<div class="animated slideInUp" [hidden]="!nombre.errors">-->
-          <!--<span style="font-size:40px" class="bg-primary" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" >Ingrese un nombre minimo con 4 caracteres </span>-->
-          <!--</div>-->
 
           <input required
                  minlength="3"
@@ -38,8 +32,22 @@
                  placeholder="Digite una preferencia como: Mujeres"
                  name="preferencia"
                  [(ngModel)]="nuevoUsuario.preferencia"
-                 #nombre="ngModel"
+                 #preferencia="ngModel"
                  #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Fecha de Nacimiento:</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input required
+                   type="date"
+                   class="form-control"
+                   name="fechaNacimiento"
+                   id="fechaNacimiento"
+                   [(ngModel)]="nuevoUsuario.fechaNacimiento"
+                   #fechaNacimiento="ngModel"
+                   #nombreElm>
+          </div>
         </div>
         <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
                 class="btn btn-block btn-success">Crear
@@ -48,13 +56,11 @@
     </div>
     <div class="col-sm-6">
       <h1>{{nuevoUsuario.nombre}}</h1>
+      <h3>{{nuevoUsuario.preferencia}}</h3>
+      <h3>{{nuevoUsuario.fechaNacimiento}}</h3>
     </div>
-    <!--<div class="col-sm-12">-->
-    <!--<pre>-->
-    <!--{{tiendas | json}}-->
-    <!--</pre>-->
-    <!--</div>-->
 
+<!--listar usuarios-->
 
   </div>
   <div class="row">
@@ -73,13 +79,11 @@
         <div class="col-sm-5">
           <button class="btn btn-block btn-danger" (click)="borrarUsuario(usuario.id)">Borrar</button>
         </div>
-        <div class="col-sm-12">
-          <a [routerLink]="[usuario.id,'agarre']">Ir a agarres</a>
-        </div>
+
       </div>
       <div class="div" [hidden]="usuario.formularioCerrado">
         <form action="">
-          <form class="animated bounceIn" (ngSubmit)="actualizarUsuario(usuario)" #NuevaUsuarioForm="ngForm">
+          <form class="animated bounceIn" (ngSubmit)="actualizarUsuario(usuario)" #NuevoUsuarioForm="ngForm">
             <div class="form-group">
               <label>Usuario</label>
               <input required
@@ -103,6 +107,20 @@
                    [(ngModel)]="usuario.preferencia"
                    #nombre="ngModel"
                    #nombreElm>
+            </div>
+            <div class="form-group">
+              <label>Fecha de Nacimiento:</label>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input required
+                       type="date"
+                       class="form-control"
+                       name="fechaNacimiento"
+                       id="fechaNacimiento"
+                       [(ngModel)]="nuevoUsuario.fechaNacimiento"
+                       #fechaNacimiento="ngModel"
+                       #nombreElm>
+              </div>
             </div>
             <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
                     class="btn btn-block btn-success">Update
