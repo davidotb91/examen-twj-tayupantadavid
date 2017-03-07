@@ -25,7 +25,23 @@
                  #nombre="ngModel"
                  #nombreElm>
         </div>
-        <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevaTiendaForm.valid" type="submit"
+        <div class="form-group">
+          <label>Preferencia</label>
+          <!--<div class="animated slideInUp" [hidden]="!nombre.errors">-->
+          <!--<span style="font-size:40px" class="bg-primary" *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" >Ingrese un nombre minimo con 4 caracteres </span>-->
+          <!--</div>-->
+
+          <input required
+                 minlength="3"
+                 type="text"
+                 class="form-control"
+                 placeholder="Digite una preferencia como: Mujeres"
+                 name="preferencia"
+                 [(ngModel)]="nuevoUsuario.preferencia"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
                 class="btn btn-block btn-success">Crear
         </button>
       </form>
@@ -67,7 +83,7 @@
             <div class="form-group">
               <label>Usuario</label>
               <input required
-                     minlength="4"
+                     minlength="2"
                      type="text"
                      class="form-control"
                      placeholder="Digite un nombre de Usuario como:   katha"
@@ -75,6 +91,18 @@
                      [(ngModel)]="usuario.nombre"
                      #nombre="ngModel"
                      #nombreElm>
+            </div>
+            <div class="form-group">
+            <label>Preferencia</label>
+            <input required
+                   minlength="3"
+                   type="text"
+                   class="form-control"
+                   placeholder="Digite una preferencia como:Mujeres"
+                   name="preferencia"
+                   [(ngModel)]="usuario.preferencia"
+                   #nombre="ngModel"
+                   #nombreElm>
             </div>
             <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
                     class="btn btn-block btn-success">Update

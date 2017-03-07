@@ -8,6 +8,15 @@
 module.exports = {
 
   attributes: {
+    nombre: {
+      type: 'string'
+    },
+    veces: {
+      type: 'integer'
+    },
+    dineroGastado: {
+      type: 'float'
+    },
     idUsuario:{
       model:"Usuario"
     }

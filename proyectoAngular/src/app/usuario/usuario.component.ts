@@ -37,7 +37,8 @@ export class UsuarioComponent implements OnInit {
     console.log(formulario);
     this.disabledButtons.NuevoUsuarioFormSubmitButton = true;
     this._http.post(this._masterURL.url + "Usuario", {
-      nombre: formulario.value.nombre
+      nombre: formulario.value.nombre,
+      preferencia:formulario.value.preferncia
     }).subscribe(
       (res) => {
         console.log("No hubo Errores");
