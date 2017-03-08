@@ -11,8 +11,12 @@ import {MasterURLService} from "../services/master-url.service";
 })
 export class AgarreComponent implements OnInit {
   title: string = "Agarres";
+
   nuevoAgarre= {};
   agarres = [];
+  usuario:any={
+    idUsuario: ""
+  };
   usuarios=[];
   disabledButtons = {
     nuevoAgarreFormSumitButton: false
@@ -50,7 +54,8 @@ export class AgarreComponent implements OnInit {
       );
   }
   crearAgarre(formulario: NgForm) {
-    console.log(formulario);
+    console.log("djdddddd");
+    console.log(formulario.value);
     this.disabledButtons.nuevoAgarreFormSumitButton = true;
     this._http.post(this._masterURL.url + "Agarre", {
       nombre: formulario.value.nombre,

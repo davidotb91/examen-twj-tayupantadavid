@@ -43,7 +43,6 @@
                    type="date"
                    class="form-control"
                    name="fechaNacimiento"
-                   id="fechaNacimiento"
                    [(ngModel)]="nuevoUsuario.fechaNacimiento"
                    #fechaNacimiento="ngModel"
                    #nombreElm>
@@ -114,10 +113,11 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 <input required
                        type="date"
+                       id="fechaNacimiento"
                        class="form-control"
                        name="fechaNacimiento"
-                       id="fechaNacimiento"
-                       [(ngModel)]="nuevoUsuario.fechaNacimiento"
+
+                       [(ngModel)]="usuario.fechaNacimiento"
                        #fechaNacimiento="ngModel"
                        #nombreElm>
               </div>
